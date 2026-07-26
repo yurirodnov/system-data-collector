@@ -1,0 +1,28 @@
+{
+  "name": "system-data-collector",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/yurirodnov/system-data-collector#readme",
+  "bugs": {
+    "url": "https://github.com/yurirodnov/system-data-collector/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurirodnov/system-data-collector.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.1",
+    "express": "^5.2.1",
+    "systeminformation": "^5.33.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}
