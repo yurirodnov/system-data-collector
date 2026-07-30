@@ -2,6 +2,6 @@
 
 import { Router } from "express";
 import { staticDataController } from "../controllers/dataController";
-export const router = Router();
+export const dataRouter = Router();
 
-router.get("/data", staticDataController);
+dataRouter.get("/data", staticDataController);

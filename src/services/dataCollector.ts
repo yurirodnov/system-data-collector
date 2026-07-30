@@ -2,6 +2,12 @@
 
 import si from "systeminformation";
 
-export const getStaticInformation = async () => {};
+export const getStaticInformation = async () => {
+  const cpu = await si.cpu();
+
+  if (cpu) {
+    return cpu;
+  }
+};
 
 export const getDynamicInformation = async () => {};
