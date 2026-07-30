@@ -15,14 +15,20 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^26.1.1",
     "express": "^5.2.1",
     "systeminformation": "^5.33.1",
     "ts-node": "^10.9.2",
     "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.1"
   }
 }
