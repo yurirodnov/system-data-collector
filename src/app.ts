@@ -2,6 +2,8 @@
 
 import { Request, Response } from "express";
 import { dataRouter } from "./routes/dataRoute";
+import { errorHandler } from "./middleware/errorHandler";
+import { logger } from "./middleware/logger";
 import express from "express";
 import cors from "cors";
 
@@ -11,8 +13,18 @@ export const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
+app.use(logger);
+
+// routes
+app.use("/api", dataRouter);
+
+app.use((req: Request, res: Response) => {
+  res.status(404).json({
+    status: "error",
+    message: "Route not found",
+    path: req.originalUrl,
+    method: req.method,
+  });
 });
 
-app.get("/data", dataRouter);
+app.use(errorHandler);
