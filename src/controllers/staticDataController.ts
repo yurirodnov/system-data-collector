@@ -1,7 +1,7 @@
 // src/controllers/dataController.ts
 
 import type { Request, Response } from "express";
-import { getStaticInformation } from "../services/dataCollector";
+import { getStaticInformation } from "../services/staticDataCollector";
 
 export const staticDataController = async (req: Request, res: Response) => {
   try {
@@ -11,5 +11,3 @@ export const staticDataController = async (req: Request, res: Response) => {
     res.status(400).json({ messge: err });
   }
 };
-
-export const dynamicDataController = async () => {};

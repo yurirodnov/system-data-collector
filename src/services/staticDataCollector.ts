@@ -9,5 +9,3 @@ export const getStaticInformation = async () => {
     return cpu;
   }
 };
-
-export const getDynamicInformation = async () => {};
