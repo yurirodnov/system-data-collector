@@ -30,5 +30,5 @@ io.on("connection", (socket) => {
 });
 
 httpServer.listen(port, () => {
-  console.log(`System data collector app listening on port ${port}`);
+  console.log(`System data collector listening on http://127.0.0.1:${port}`);
 });
