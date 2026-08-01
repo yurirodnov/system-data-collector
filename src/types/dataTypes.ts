@@ -3,7 +3,9 @@
 // Static data
 
 interface StaticCPU {
+  manufacturer: string;
   modelName: string;
+  cores: number;
 }
 
 interface StaticMemory {

@@ -1,12 +1,23 @@
 // src/services/dataCollector.ts
 import { StaticCommon } from "../types/dataTypes";
-import si from "systeminformation";
+import si, { currentLoad } from "systeminformation";
 
 export const getStaticInformation = async (): Promise<StaticCommon> => {
-  const [cpu, memory, gpu, os] = await Promise.all([si.cpu(), si.mem(), si.graphics(), si.osInfo()]);
+  const [cpu, cpuLoad, cpuTemperature, memory, gpu, os] = await Promise.all([
+    si.cpu(),
+    si.currentLoad(),
+    si.cpuTemperature(),
+    si.mem(),
+    si.graphics(),
+    si.osInfo(),
+  ]);
 
   const cpuInfo = {
+    manufacturer: cpu.manufacturer,
     modelName: cpu.brand,
+    cores: cpu.physicalCores,
+    currentLoad: cpuLoad.currentLoad,
+    currentTemperature: cpuTemperature.main,
   };
 
   const memoryInfo = {
