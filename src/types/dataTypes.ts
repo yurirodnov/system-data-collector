@@ -22,22 +22,22 @@ interface StaticGPU {
 interface StaticOs {
   osName: string;
   arch: string;
+  uptime: number;
 }
 
-// interface Disk {
-//   name: string;
-// }
-
-// interface StaticStorage {
-//   disk: Disk[];
-// }
+export interface Disk {
+  diskNumber: number;
+  diskName: string;
+  diskSizeTotal: number;
+  diskSizeUsed: number;
+}
 
 export interface StaticCommon {
   cpu: StaticCPU;
   memory: StaticMemory;
   gpu: StaticGPU;
   os: StaticOs;
-  // storage: StaticStorage;
+  storage: Disk[];
 }
 
 // Dynamic data
