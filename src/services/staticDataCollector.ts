@@ -1,6 +1,8 @@
 // src/services/dataCollector.ts
+
 import { StaticCommon } from "../types/dataTypes";
-import si, { currentLoad } from "systeminformation";
+import si from "systeminformation";
+import { getRandomTemperature } from "../util/getRandomTemperature";
 
 export const getStaticInformation = async (): Promise<StaticCommon> => {
   const [cpu, cpuLoad, cpuTemperature, memory, gpu, os] = await Promise.all([
@@ -17,19 +19,23 @@ export const getStaticInformation = async (): Promise<StaticCommon> => {
     modelName: cpu.brand,
     cores: cpu.physicalCores,
     currentLoad: cpuLoad.currentLoad,
-    currentTemperature: process.env.ENV === "dev" ? 35 : cpuTemperature.main,
+    currentTemperature: process.env.ENV === "dev" ? getRandomTemperature(35, 42) : cpuTemperature.main,
   };
 
   const memoryInfo = {
     memoryTotal: memory.total,
+    memoryUsed: memory.used,
+    memoryActive: memory.active,
   };
 
   const gpuInfo = {
     modelName: gpu.controllers[0].name,
+    gpuMemoryTotal: gpu.controllers[0].memoryTotal,
   };
 
   const osInfo = {
     osName: os.distro,
+    arch: os.arch,
   };
 
   const commonInfo: StaticCommon = {
