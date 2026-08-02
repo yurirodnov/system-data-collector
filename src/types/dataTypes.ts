@@ -29,7 +29,12 @@ export interface Disk {
   diskNumber: number;
   diskName: string;
   diskSizeTotal: number;
-  diskSizeUsed: number;
+}
+
+export interface FS {
+  fsNumber: number;
+  spaceTotal: number;
+  spaceUsed: number;
 }
 
 export interface StaticCommon {
@@ -37,7 +42,8 @@ export interface StaticCommon {
   memory: StaticMemory;
   gpu: StaticGPU;
   os: StaticOs;
-  storage: Disk[];
+  disk: Disk[];
+  fs: FS[];
 }
 
 // Dynamic data
