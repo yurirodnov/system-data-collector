@@ -49,4 +49,4 @@ export interface StaticCommon {
 // Dynamic data
 
 interface DynamicCPU {}
-interface DynamicCommon {}
+export interface DynamicCommon {}
