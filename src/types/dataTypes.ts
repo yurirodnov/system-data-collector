@@ -48,5 +48,15 @@ export interface StaticCommon {
 
 // Dynamic data
 
-interface DynamicCPU {}
-export interface DynamicCommon {}
+interface DynamicCPU {
+  cpuLoad: number;
+}
+
+interface DynamicMemory {
+  memoryUsed: number;
+}
+
+export interface DynamicCommon {
+  cpu: DynamicCPU;
+  memory: DynamicMemory;
+}

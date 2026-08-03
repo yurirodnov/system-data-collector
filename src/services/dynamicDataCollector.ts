@@ -2,14 +2,19 @@ import si from "systeminformation";
 import { DynamicCommon } from "../types/dataTypes";
 
 export const getDynamicInformation = async (): Promise<DynamicCommon> => {
-  const [cpuLoad] = await Promise.all([si.currentLoad()]);
+  const [cpuLoad, memoryUsed] = await Promise.all([si.currentLoad(), si.mem()]);
 
   const cpuInfo = {
-    cpuLoad: cpuLoad,
+    cpuLoad: cpuLoad.currentLoad,
+  };
+
+  const memoryInfo = {
+    memoryUsed: memoryUsed.used,
   };
 
   const commonInfo: DynamicCommon = {
     cpu: cpuInfo,
+    memory: memoryInfo,
   };
 
   return commonInfo;
