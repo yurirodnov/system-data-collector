@@ -1,7 +1,7 @@
 // src/services/dataCollector.ts
 
 import { Disk, FS, StaticCommon } from "../types/dataTypes";
-import si from "systeminformation";
+import si, { mem } from "systeminformation";
 import { getRandomTemperature } from "../util/getRandomTemperature";
 
 export const getStaticInformation = async (): Promise<StaticCommon> => {
@@ -27,13 +27,13 @@ export const getStaticInformation = async (): Promise<StaticCommon> => {
 
   const memoryInfo = {
     memoryTotal: memory.total,
-    memoryUsed: memory.used,
-    memoryActive: memory.active,
+    memoryFree: memory.free,
   };
 
   const gpuInfo = {
     modelName: gpu.controllers[0].name,
     gpuMemoryTotal: gpu.controllers[0].memoryTotal,
+    gpuMemoryFree: gpu.controllers[0].memoryFree,
   };
 
   const osInfo = {

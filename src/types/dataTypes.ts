@@ -10,13 +10,13 @@ interface StaticCPU {
 
 interface StaticMemory {
   memoryTotal: number;
-  memoryUsed: number;
-  memoryActive: number;
+  memoryFree: number;
 }
 
 interface StaticGPU {
   modelName: string | undefined;
   gpuMemoryTotal: number | undefined;
+  gpuMemoryFree: number | undefined;
 }
 
 interface StaticOs {
