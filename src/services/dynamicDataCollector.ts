@@ -5,7 +5,7 @@ export const getDynamicInformation = async (): Promise<DynamicCommon> => {
   const [cpuLoad, memoryUsed] = await Promise.all([si.currentLoad(), si.mem()]);
 
   const cpuInfo = {
-    cpuLoad: cpuLoad.currentLoad,
+    cpuLoad: Number(cpuLoad.currentLoad).toFixed(2),
   };
 
   const memoryInfo = {
