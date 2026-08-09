@@ -56,7 +56,12 @@ interface DynamicMemory {
   memoryUsed: number;
 }
 
+interface DynamicSystem {
+  uptime: number;
+}
+
 export interface DynamicCommon {
   cpu: DynamicCPU;
   memory: DynamicMemory;
+  system: DynamicSystem;
 }
