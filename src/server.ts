@@ -13,16 +13,16 @@ const io = new Server(httpServer, {
   cors: { origin: "*", methods: ["POST", "GET"] },
 });
 
-const metricsNamespace = io.of("/api/data/dynamic"); // Или просто io, если ты убрал неймспейс
+const metricsNamespace = io.of("/api/data/dynamic");
 
 metricsNamespace.on("connection", (socket) => {
-  console.log("Backend connected", socket.id); // Ты должен видеть этот ID (iDRlOGk...)
+  console.log("Backend connected", socket.id);
 
   const interval = setInterval(async () => {
-    const metrics = await getDynamicInformation(); // Твой сервис
+    const metrics = await getDynamicInformation();
 
     if (metrics) {
-      console.log("Backend send metrics", metrics); // <-- ЭТО ДОЛЖНО ПЕЧАТАТЬСЯ КАЖДЫЕ 2 СЕК!
+      console.log("Backend send metrics", metrics);
       socket.emit("metrics-update", metrics);
     } else {
       console.log("No metrics...");
