@@ -53,7 +53,8 @@ interface DynamicCPU {
 }
 
 interface DynamicMemory {
-  memoryUsed: number;
+  memoryUsedPercent: number;
+  memoryUsedCount: number;
 }
 
 interface DynamicSystem {

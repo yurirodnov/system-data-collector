@@ -10,7 +10,8 @@ export const getDynamicInformation = async (): Promise<DynamicCommon> => {
   };
 
   const memoryInfo = {
-    memoryUsed: Math.floor(getPercent(memory.total, memory.used)),
+    memoryUsedPercent: Math.floor(getPercent(memory.total, memory.used)),
+    memoryUsedCount: memory.used,
   };
 
   const systemInfo = {
