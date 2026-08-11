@@ -3,6 +3,7 @@
 import { Disk, FS, StaticCommon } from "../types/dataTypes";
 import si, { mem } from "systeminformation";
 import { getRandomTemperature } from "../util/getRandomTemperature";
+import { getPercent } from "../util/getPercent";
 
 export const getStaticInformation = async (): Promise<StaticCommon> => {
   const [cpu, cpuLoad, cpuTemperature, memory, gpu, os, time, disks, fs] = await Promise.all([
@@ -51,7 +52,12 @@ export const getStaticInformation = async (): Promise<StaticCommon> => {
   const fsInfo: FS[] = [];
 
   for (let i = 0; i < fs.length; i += 1) {
-    fsInfo.push({ fsNumber: i, spaceTotal: fs[i].size, spaceUsed: fs[i].used });
+    fsInfo.push({
+      fsNumber: i,
+      spaceTotal: fs[i].size,
+      spaceUsed: fs[i].used,
+      usedPercent: getPercent(fs[i].size, fs[i].used),
+    });
   }
 
   const commonInfo: StaticCommon = {
