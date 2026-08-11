@@ -22,7 +22,7 @@ export const getStaticInformation = async (): Promise<StaticCommon> => {
     modelName: cpu.brand,
     cores: cpu.physicalCores,
     currentLoad: cpuLoad.currentLoad,
-    currentTemperature: process.env.ENV === "dev" ? getRandomTemperature(35, 42) : cpuTemperature.main,
+    currentTemperature: process.env.ENV === "dev" ? getRandomTemperature(38, 42) : cpuTemperature.main,
   };
 
   const memoryInfo = {
