@@ -66,6 +66,11 @@ interface DynamicGPU {
   gpuTemperature: number;
 }
 
+export interface DynamicFS {
+  spaceUsed: number;
+  usedPercent: number;
+}
+
 interface DynamicMemory {
   memoryUsedPercent: number;
   memoryUsedCount: number;
@@ -79,4 +84,5 @@ export interface DynamicCommon {
   cpu: DynamicCPU;
   memory: DynamicMemory;
   system: DynamicSystem;
+  fs: DynamicFS[];
 }

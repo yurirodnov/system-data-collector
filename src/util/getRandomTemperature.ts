@@ -1,3 +1,5 @@
+// Use in Windows because of Windows temperature collecting issues
+
 export const getRandomTemperature = (a: number, b: number): number => {
   const min = Math.min(a, b);
   const max = Math.max(a, b);
