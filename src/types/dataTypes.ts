@@ -24,6 +24,7 @@ interface StaticGPU {
   gpuMemoryUsed: number | undefined;
   gpuMemoryUsedPercent: number | undefined;
   gpuLoad: number | undefined;
+  gpuTemperature: number;
 }
 
 interface StaticOs {
@@ -45,6 +46,10 @@ export interface FS {
   usedPercent: number;
 }
 
+interface StaticSystem {
+  uptime: number;
+}
+
 export interface StaticCommon {
   cpu: StaticCPU;
   memory: StaticMemory;
@@ -52,6 +57,7 @@ export interface StaticCommon {
   os: StaticOs;
   disk: Disk[];
   fs: FS[];
+  system: StaticSystem;
 }
 
 // Dynamic data
@@ -62,7 +68,12 @@ interface DynamicCPU {
 }
 
 interface DynamicGPU {
-  gpuLoad: number;
+  modelName: string | undefined;
+  gpuMemoryTotal: number | undefined;
+  gpuMemoryFree: number | undefined;
+  gpuMemoryUsed: number | undefined;
+  gpuMemoryUsedPercent: number | undefined;
+  gpuLoad: number | undefined;
   gpuTemperature: number;
 }
 
@@ -85,4 +96,5 @@ export interface DynamicCommon {
   memory: DynamicMemory;
   system: DynamicSystem;
   fs: DynamicFS[];
+  gpu: DynamicGPU;
 }

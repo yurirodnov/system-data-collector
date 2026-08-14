@@ -40,6 +40,7 @@ export const getStaticInformation = async (): Promise<StaticCommon> => {
     gpuMemoryUsed: gpu.controllers[0].memoryUsed,
     gpuMemoryUsedPercent: Math.floor(getPercent(gpu.controllers[0].memoryTotal, gpu.controllers[0].memoryUsed)),
     gpuLoad: gpu.controllers[0].utilizationGpu,
+    gpuTemperature: process.env.ENV === "dev" ? getRandomTemperature(38, 42) : cpuTemperature.main,
   };
 
   const osInfo = {
@@ -65,6 +66,10 @@ export const getStaticInformation = async (): Promise<StaticCommon> => {
     });
   }
 
+  const systemInfo = {
+    uptime: time.uptime,
+  };
+
   const commonInfo: StaticCommon = {
     cpu: cpuInfo,
     memory: memoryInfo,
@@ -72,6 +77,7 @@ export const getStaticInformation = async (): Promise<StaticCommon> => {
     os: osInfo,
     disk: diskInfo,
     fs: fsInfo,
+    system: systemInfo,
   };
 
   return commonInfo;

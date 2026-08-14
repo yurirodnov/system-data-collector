@@ -5,12 +5,13 @@ import { getPercent } from "../util/getPercent";
 import { getRandomTemperature } from "../util/getRandomTemperature";
 
 export const getDynamicInformation = async (): Promise<DynamicCommon> => {
-  const [cpuLoad, cpuTemperature, memory, time, fs] = await Promise.all([
+  const [cpuLoad, cpuTemperature, memory, time, fs, gpu] = await Promise.all([
     si.currentLoad(),
     si.cpuTemperature(),
     si.mem(),
     si.time(),
     si.fsSize(),
+    si.graphics(),
   ]);
 
   const cpuInfo = {
@@ -18,10 +19,15 @@ export const getDynamicInformation = async (): Promise<DynamicCommon> => {
     cpuTemperature: process.env.ENV === "dev" ? getRandomTemperature(38, 42) : cpuTemperature.main,
   };
 
-  // const gpuInfo = {
-  //   cpuLoad:
-  //   gpuTemperature:
-  // };
+  const gpuInfo = {
+    modelName: gpu.controllers[0].name,
+    gpuMemoryTotal: gpu.controllers[0].memoryTotal,
+    gpuMemoryFree: gpu.controllers[0].memoryFree,
+    gpuMemoryUsed: gpu.controllers[0].memoryUsed,
+    gpuMemoryUsedPercent: Math.floor(getPercent(gpu.controllers[0].memoryTotal, gpu.controllers[0].memoryUsed)),
+    gpuLoad: gpu.controllers[0].utilizationGpu,
+    gpuTemperature: process.env.ENV === "dev" ? getRandomTemperature(38, 42) : cpuTemperature.main,
+  };
 
   const fsInfo: DynamicFS[] = [];
 
@@ -46,6 +52,7 @@ export const getDynamicInformation = async (): Promise<DynamicCommon> => {
     memory: memoryInfo,
     system: systemInfo,
     fs: fsInfo,
+    gpu: gpuInfo,
   };
 
   return commonInfo;
