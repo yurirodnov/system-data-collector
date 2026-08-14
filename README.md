@@ -40,7 +40,9 @@ Needs running backend on the same host
     ```bash
     npm run dev
     ```
-5.  **Open the link shown in the terminal (usually `http://localhost:3000`)**.
+5.  **Backend runs on `http://localhost:3000`**.
+    - Test REST: `http://localhost:3000/api/data/static`
+    - WebSocket: `ws://localhost:3000/api/data/dynamic`
 
 6.  **Build for production (optional)**:
     ```bash
