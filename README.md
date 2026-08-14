@@ -3,6 +3,7 @@
 ![Cover](cover.jpg)
 
 Backend app for a minimalistic dashboard with main metrics of machine.
+There are issues with collecting some data in Windows, i use fake CPU temperature for that.
 
 ## Features
 
