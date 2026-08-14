@@ -16,6 +16,11 @@ export const getDynamicInformation = async (): Promise<DynamicCommon> => {
     cpuTemperature: process.env.ENV === "dev" ? getRandomTemperature(38, 42) : cpuTemperature.main,
   };
 
+  // const gpuInfo = {
+  //   cpuLoad:
+  //   gpuTemperature:
+  // };
+
   const memoryInfo = {
     memoryUsedPercent: Math.floor(getPercent(memory.total, memory.used)),
     memoryUsedCount: memory.used,

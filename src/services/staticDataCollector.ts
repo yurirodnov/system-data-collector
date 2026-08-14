@@ -22,19 +22,24 @@ export const getStaticInformation = async (): Promise<StaticCommon> => {
     manufacturer: cpu.manufacturer,
     modelName: cpu.brand,
     cores: cpu.physicalCores,
-    currentLoad: cpuLoad.currentLoad,
+    currentLoad: Number(cpuLoad.currentLoad.toFixed(2)),
     currentTemperature: process.env.ENV === "dev" ? getRandomTemperature(38, 42) : cpuTemperature.main,
   };
 
   const memoryInfo = {
     memoryTotal: memory.total,
     memoryFree: memory.free,
+    memoryUsedPercent: Math.floor(getPercent(memory.total, memory.used)),
+    memoryUsedCount: memory.used,
   };
 
   const gpuInfo = {
     modelName: gpu.controllers[0].name,
     gpuMemoryTotal: gpu.controllers[0].memoryTotal,
     gpuMemoryFree: gpu.controllers[0].memoryFree,
+    gpuMemoryUsed: gpu.controllers[0].memoryUsed,
+    gpuMemoryUsedPercent: Math.floor(getPercent(gpu.controllers[0].memoryTotal, gpu.controllers[0].memoryUsed)),
+    gpuLoad: gpu.controllers[0].utilizationGpu,
   };
 
   const osInfo = {
