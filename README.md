@@ -41,10 +41,19 @@ Needs running backend on the same host
     npm run dev
     ```
 5.  **Backend runs on `http://localhost:3000`**.
+
+    REST
+
     ```bash
-    Test REST: `http://localhost:3000/api/data/static`
-    WebSocket: `ws://localhost:3000/api/data/dynamic`
+    http://localhost:3000/api/data/static
     ```
+
+    WebSocket
+
+    ```bash
+    ws://localhost:3000/api/data/dynamic
+    ```
+
 6.  **Build for production (optional)**:
     ```bash
     npm run build
