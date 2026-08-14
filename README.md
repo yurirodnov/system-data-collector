@@ -9,7 +9,7 @@ Backend app for a minimalistic dashboard with main metrics of machine.
 - Built with Express.js, TypeScript
 - Frontend: https://github.com/yurirodnov/system-dashboard
 - Collect data with https://github.com/sebhildebrandt/systeminformation
-- Use REST API and WebSocket
+- Uses REST API and WebSocket
 
 ## Local run
 
