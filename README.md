@@ -29,7 +29,7 @@ Needs running backend on the same host
 
 2.  **Go to an app directory:**
     ```bash
-    cd system-dashboard
+    cd system-data-collector
     ```
 3.  **Install dependencies:**
     ```bash
